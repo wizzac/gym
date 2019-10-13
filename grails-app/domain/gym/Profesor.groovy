@@ -16,5 +16,12 @@ class Profesor extends EstadoSimple{
         version(false)
     }
     static constraints = {
+        foto nullable: true
+        dni nullable: true
+        nombre nullable: true
+        telefono nullable: true
+        direccion nullable: true
+        mail nullable: true
+
     }
 }

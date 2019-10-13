@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title"><g:message code="produ.label" default="Alumnos"/></h4>
+                <h4 class="card-title"><g:message code="produ.label" default="Clases"/></h4>
             </div>
             <div class="card-body">
                 <div class="row">
