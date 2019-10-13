@@ -6,7 +6,8 @@ import nomenclador.EstadoSimple
 class Paga extends EstadoSimple{
 
     Alumno alumno
-    Integer  clases
+    Clase clase
+    Integer cantClases
     Date desde
     Date hasta
 
@@ -15,5 +16,9 @@ class Paga extends EstadoSimple{
     }
 
     static constraints = {
+
+        cantClases nullable:true
+        desde nullable: true
+        hasta nullable: true
     }
 }

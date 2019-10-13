@@ -1,76 +1,80 @@
-<%@ page import="gym.Paga" %>
 
-
-
-<div class="fieldcontain ${hasErrors(bean: pagaInstance, field: 'modificado', 'error')} ">
-	<label for="modificado">
-		<g:message code="paga.modificado.label" default="Modificado" />
-		
-	</label>
-	<g:datePicker name="modificado" precision="day"  value="${pagaInstance?.modificado}" default="none" noSelection="['': '']" />
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="bmd-label-floating"><g:message code="alumno" default="Nombre"/></label>
+            <g:textField name="nombre"  class="form-control" value="${alumno?.nombre}"/>
+        </div>
+    </div>
 
 </div>
-
-<div class="fieldcontain ${hasErrors(bean: pagaInstance, field: 'usuario', 'error')} ">
-	<label for="usuario">
-		<g:message code="paga.usuario.label" default="Usuario" />
-		
-	</label>
-	<g:select id="usuario" name="usuario.id" from="${security.Usuario.list()}" optionKey="id" value="${pagaInstance?.usuario?.id}" class="many-to-one" noSelection="['null': '']"/>
-
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="bmd-label-floating"><g:message code="producto" default="Telefono"/></label>
+            <g:field type="number" name="telefono"  class="form-control" value="${alumno?.telefono}"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="bmd-label-floating"><g:message code="producto" default="Dni"/></label>
+            <g:field type="number" name="dni"  class="form-control" value="${alumno?.dni}"/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="bmd-label-floating"><g:message code="producto" default="Direccion"/></label>
+            <g:textField name="direccion"  class="form-control" value="${alumno?.direccion}"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="bmd-label-floating"><g:message code="producto" default="Fecha de nacimiento"/></label>
+            <g:datePicker name="fechaDeNacimiento"  class="form-control" value="${alumno?.fechaDeNacimiento}"/>
+        </div>
+    </div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: pagaInstance, field: 'alumno', 'error')} required">
-	<label for="alumno">
-		<g:message code="paga.alumno.label" default="Alumno" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="alumno" name="alumno.id" from="${gym.Alumno.list()}" optionKey="id" required="" value="${pagaInstance?.alumno?.id}" class="many-to-one"/>
-
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="bmd-label-floating"><g:message code="producto" default="Puntaje"/></label>
+            <g:field type="number" name="puntaje" class="form-control" value="${alumno?.puntaje}"/>
+        </div>
+    </div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: pagaInstance, field: 'clases', 'error')} required">
-	<label for="clases">
-		<g:message code="paga.clases.label" default="Clases" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="clases" type="number" value="${pagaInstance.clases}" required=""/>
-
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="bmd-label-floating"><g:message code="alumno" default="Notas"/></label>
+            <g:textArea name="notas" class="form-control" value="${alumno?.notas}"/>
+        </div>
+    </div>
 </div>
+<br>
 
-<div class="fieldcontain ${hasErrors(bean: pagaInstance, field: 'creado', 'error')} required">
-	<label for="creado">
-		<g:message code="paga.creado.label" default="Creado" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="creado" precision="day"  value="${pagaInstance?.creado}"  />
 
-</div>
 
-<div class="fieldcontain ${hasErrors(bean: pagaInstance, field: 'desde', 'error')} required">
-	<label for="desde">
-		<g:message code="paga.desde.label" default="Desde" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="desde" precision="day"  value="${pagaInstance?.desde}"  />
+<div id="errors"></div>
+<div id="modal_viewer"></div>
+<div id="notification"></div>
 
-</div>
+<script>
+    $('.selectInput').selectpicker({
+        style: 'btn-primary',
+        noneSelectedText: "-"
+    });
 
-<div class="fieldcontain ${hasErrors(bean: pagaInstance, field: 'estado', 'error')} required">
-	<label for="estado">
-		<g:message code="paga.estado.label" default="Estado" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="estado" type="number" value="${pagaInstance.estado}" required=""/>
+    %{--<g:if test="${producto?.idCategoria!=null}">--}%
+    %{--$('#tipo').val('${producto?.idCategoria?.id}')--}%
+    %{--$('.selectpicker').selectpicker('refresh')--}%
+    %{--</g:if>--}%
 
-</div>
 
-<div class="fieldcontain ${hasErrors(bean: pagaInstance, field: 'hasta', 'error')} required">
-	<label for="hasta">
-		<g:message code="paga.hasta.label" default="Hasta" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="hasta" precision="day"  value="${pagaInstance?.hasta}"  />
+</script>
 
-</div>
+
 

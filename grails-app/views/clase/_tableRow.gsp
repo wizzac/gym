@@ -1,5 +1,5 @@
 <td onclick="showProducto('${clase.id}')">${clase.nombre}</td>
-<td onclick="showProducto('${clase.id}')">${clase?.Precio}</td>
+<td onclick="showProducto('${clase.id}')">${clase?.precio}</td>
 %{--<td onclick="showProducto('${alumno.id}')">${alumno?.puntaje}</td>--}%
 %{--<td onclick="showProducto('${alumno.id}')">${alumno?.telefono}</td>--}%
 

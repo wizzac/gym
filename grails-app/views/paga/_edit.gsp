@@ -9,18 +9,16 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                     <i class="material-icons">clear</i>
                                 </button>
-                                <h4 class="card-title"><g:message code="default.new.label" args="[message(code: 'clase', default: 'Elememto')]" default="Nuevo ALumno"/></h4>
+                                <h4 class="card-title"><g:message code="default.edit.label" args="[message(code: 'cliente.label', default: 'Alumno')]" default="Editar Pago"/></h4>
                             </div>
-                            <g:formRemote name="create" update="[success: 'list', failure: 'errors']" url="[resource: Elememto, action: 'save']" method="POST" onSuccess="closeModal()">
+                            <g:formRemote name="create" update="[success: 'tr' + paga.id, failure: 'errors']" url="[resource: paga, action: 'update']" method="POST" onSuccess="closeModal()">
                                 <div class="card-body">
                                     <g:render template="form"/>
                                     <br>
                                     <div class="row">
-                                        <div class="col-md-4">
-
-                                        </div>
-                                        <div class="col-md-8">
-                                            <g:submitButton name="create" class="btn btn-success pull-right" value="${message(code: "default.button.save.label", default: "Guardar")}"/>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-success pull-right"><g:message code="default.button.update.label" default="Actualizar"/></button>
+                                            %{--<button type="button" class="btn btn-default pull-right" data-dismiss="modal"><g:message code="default.button.close.label" default="Cerrar"/></button>--}%
                                         </div>
                                     </div>
                                 </div>
@@ -34,8 +32,8 @@
 </div>
 
 <div id="errors"></div>
-<div id="modal_view"></div>
-<div id="notification"></div>
+
+<div id="modal_view_pass"></div>
 
 <script>
     $('#modal-form').modal({

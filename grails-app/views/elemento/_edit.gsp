@@ -1,41 +1,46 @@
-<%@ page import="gym.Elemento" %>
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'elemento.label', default: 'Elemento')}" />
-		<title><g:message code="default.edit.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#edit-elemento" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="edit-elemento" class="content scaffold-edit" role="main">
-			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<g:hasErrors bean="${elementoInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${elementoInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
-			<g:form url="[resource:elementoInstance, action:'update']" method="PUT" >
-				<g:hiddenField name="version" value="${elementoInstance?.version}" />
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
-</html>
+<div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-plain">
+                            <div class="card-header card-header-primary">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <i class="material-icons">clear</i>
+                                </button>
+                                <h4 class="card-title"><g:message code="default.edit.label" args="[message(code: 'clase.labe', default: 'Elemento')]" default="Editar Elemento"/></h4>
+                            </div>
+                            <g:formRemote name="create" update="[success: 'tr' + elemento.id, failure: 'errors']" url="[resource: elemento, action: 'update']" method="POST" onSuccess="closeModal()">
+                                <div class="card-body">
+                                    <g:render template="form"/>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-success pull-right"><g:message code="default.button.update.label" default="Actualizar"/></button>
+                                            %{--<button type="button" class="btn btn-default pull-right" data-dismiss="modal"><g:message code="default.button.close.label" default="Cerrar"/></button>--}%
+                                        </div>
+                                    </div>
+                                </div>
+                            </g:formRemote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="errors"></div>
+
+<div id="modal_view_pass"></div>
+
+<script>
+    $('#modal-form').modal({
+        show: true
+    })
+
+    function closeModal() {
+        $('#modal-form').modal('hide');
+    }
+</script>

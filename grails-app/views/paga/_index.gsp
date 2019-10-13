@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title"><g:message code="produ.label" default="Elementos"/></h4>
+                <h4 class="card-title"><g:message code="produ.label" default="Pagos"/></h4>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -12,7 +12,7 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
 
-                        <g:formRemote name="filter" url="[controller: 'Elemento', action: 'filter', params: parametros]" update="list" class="navbar-form">
+                        <g:formRemote name="filter" url="[controller: 'Paga', action: 'filter', params: parametros]" update="list" class="navbar-form">
                             <div class="input-group no-border">
                                 <g:textField name="filtroTexto" class="form-control" placeholder="${message(code: "default.search.label", default: "Buscar")}..."/>
                                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -27,7 +27,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12" id="list">
-                        <g:render template="list" model="[Elementos: elementos]"/>
+                        <g:render template="list" model="[Pagos: pago]"/>
                     </div>
                 </div>
             </div>
