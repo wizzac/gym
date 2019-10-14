@@ -1,38 +1,23 @@
 
 <div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label class="bmd-label-floating"><g:message code="alumno" default="Nombre"/></label>
-            <g:textField name="nombre"  class="form-control" value="${alumno?.nombre}"/>
-        </div>
-    </div>
-
-</div>
-<div class="row">
     <div class="col-md-6">
         <div class="form-group">
-            <label class="bmd-label-floating"><g:message code="producto" default="Telefono"/></label>
-            <g:field type="number" name="telefono"  class="form-control" value="${alumno?.telefono}"/>
+            <label class="bmd-label-floating"><g:message code="alumno" default="Alumno"/></label>
+            <g:select from="${alumnos}" optionValue="nombre" optionKey="id" name="nombre"  class="form-control" value="${pago?.alumno?.id}"/>
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            <label class="bmd-label-floating"><g:message code="producto" default="Dni"/></label>
-            <g:field type="number" name="dni"  class="form-control" value="${alumno?.dni}"/>
+            <label class="bmd-label-floating"><g:message code="alumno" default="Clase"/></label>
+            <g:select from="${clases}"  optionValue="nombre" optionKey="id" name="nombre"  class="form-control" value="${pago?.clase?.id}"/>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
-            <label class="bmd-label-floating"><g:message code="producto" default="Direccion"/></label>
-            <g:textField name="direccion"  class="form-control" value="${alumno?.direccion}"/>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label class="bmd-label-floating"><g:message code="producto" default="Fecha de nacimiento"/></label>
-            <g:datePicker name="fechaDeNacimiento"  class="form-control" value="${alumno?.fechaDeNacimiento}"/>
+            <label class="bmd-label-floating"><g:message code="producto" default="Cantidad de clases"/></label>
+            <g:field type="number" name="cantClases"  class="form-control" value="${pago?.cantClases}"/>
         </div>
     </div>
 </div>
@@ -40,23 +25,27 @@
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
-            <label class="bmd-label-floating"><g:message code="producto" default="Puntaje"/></label>
-            <g:field type="number" name="puntaje" class="form-control" value="${alumno?.puntaje}"/>
+            <label class="bmd-label-floating"><g:message code="producto" default="Desde"/></label>
+            <g:field type="date" name="desde"  class="form-control" value="${pago?.desde}"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="bmd-label-floating"><g:message code="producto" default="Hasta"/></label>
+            <g:field type="date" name="hasta"  class="form-control" value="${pago?.hasta}"/>
         </div>
     </div>
 </div>
+
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="form-group">
-            <label class="bmd-label-floating"><g:message code="alumno" default="Notas"/></label>
-            <g:textArea name="notas" class="form-control" value="${alumno?.notas}"/>
+            <label class="bmd-label-floating"><g:message code="producto" default="Free"/></label>
+            <g:checkBox  type="number" name="free"  class="form-control" value="${pago?.free}"/>
         </div>
     </div>
 </div>
-<br>
-
-
 
 <div id="errors"></div>
 <div id="modal_viewer"></div>

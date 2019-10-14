@@ -30,7 +30,7 @@ class LoginService {
         Enumeration ps = propCfg.propertyNames();
         while (ps.hasMoreElements()) {
             String key = ps.nextElement();
-            if (key.startsWith("resto.default")) {
+            if (key.startsWith("gym.default")) {
                 session[key] = propCfg.getProperty(key);
                 log.info("Agregando " + key + "=" + session[key] + " ...");
             }

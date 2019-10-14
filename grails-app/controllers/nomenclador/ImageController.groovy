@@ -57,8 +57,8 @@ class ImageController {
             String name = fileName.substring(0, index)
             String extension = fileName.substring(index)
 
-            Path destination = Paths.get(stringService.fixForPath(grailsApplication.config.resto.default.pathDocumentosTmp + "/" + name + "_" + new Date().format("ddMMyyyyHHmmss") + extension))
-            Path moveDestination = Paths.get(stringService.fixForPath(grailsApplication.config.resto.default.path.base + grailsApplication.config.resto.default.pathDocumentosTmp + "/" + name + "_" + new Date().format("ddMMyyyyHHmmss") + extension))
+            Path destination = Paths.get(stringService.fixForPath(grailsApplication.config.gym.default.pathDocumentosTmp + "/" + name + "_" + new Date().format("ddMMyyyyHHmmss") + extension))
+            Path moveDestination = Paths.get(stringService.fixForPath(grailsApplication.config.gym.default.path.base + grailsApplication.config.resto.default.pathDocumentosTmp + "/" + name + "_" + new Date().format("ddMMyyyyHHmmss") + extension))
 
             new File(moveDestination.toString()).mkdirs()
             Files.copy(inputStream, moveDestination, StandardCopyOption.REPLACE_EXISTING)

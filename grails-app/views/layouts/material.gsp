@@ -13,8 +13,8 @@
     <link rel="apple-touch-icon" sizes="76x76" href="${resource(dir: "images", file: "logoposta.png")}">
     <link rel="icon" type="image/png" href="${resource(dir: "images", file: "logoposta.png")}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="description" content="Sistema Resto " />
-    <title><g:message code="application" default="Sistema "/> <g:message code="application" default="Resto"/></title>
+    <meta name="description" content="Mi tiempo " />
+    <title><g:message code="application" default="Sistema "/> <g:message code="application" default="gym"/></title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="${request.contextPath}/material/assets/css/google-roboto.css" />
@@ -23,13 +23,9 @@
     <link href="${request.contextPath}/material/assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
 
     <asset:stylesheet src="plugins/bootstrap-select/bootstrap-select.min.css"/>
-
     <asset:stylesheet src="plugins/jquery-ui-autocomplete/jquery-ui.min.css"/>
-
     <asset:stylesheet src="spinner.css"/>
-
     <asset:stylesheet src="qilqa.css"/>
-
     <g:layoutHead/>
 </head>
 
@@ -37,17 +33,13 @@
 <div class="wrapper">
 
     <g:render template="/layouts/sidebar"/>
-
     <div class="main-panel">
-
         <g:render template="/layouts/header"/>
-
         <div class="content" id="contenido">
             <div class="container-fluid">
                     <g:layoutBody/>
             </div>
         </div>
-
         <g:render template="/layouts/footer"/>
 
     </div>

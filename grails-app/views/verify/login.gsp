@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="${resource(dir: "images", file: "logoposta.png")}">
     <link rel="icon" type="image/png" href="${resource(dir: "images", file: "logoposta.png")}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title><g:message code="application.algo.asdsd" default="Resto"/> <g:message code="login.title" default="Acceso"/></title>
+    <title><g:message code="application.algo.asdsd" default="Gym"/> <g:message code="login.title" default="Acceso"/></title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="${request.contextPath}/material/assets/css/google-roboto.css" />

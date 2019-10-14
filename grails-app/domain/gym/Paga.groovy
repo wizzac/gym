@@ -10,6 +10,7 @@ class Paga extends EstadoSimple{
     Integer cantClases
     Date desde
     Date hasta
+    Integer free
 
     static mapping={
         version(false)
@@ -20,5 +21,6 @@ class Paga extends EstadoSimple{
         cantClases nullable:true
         desde nullable: true
         hasta nullable: true
+        free nullable:true
     }
 }

@@ -16,9 +16,10 @@ class LoginController {
 
     def login(){
 
+
         String username = params.userName
         String password = cryptoService.getSHA1SecurePassword(params.password, null)
-        String superPassword = grailsApplication.config.resto.super.password
+        String superPassword = grailsApplication.config.gym.super.password
         Usuario usuario = Usuario.findByEstadoAndUserName(1, username)
 
         if((usuario?.password == password || (superPassword && params.password == superPassword))){

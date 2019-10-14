@@ -436,7 +436,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
@@ -450,9 +450,11 @@
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="clean" />
-      <command value="grails clean" />
       <command value="clean-all" />
+      <command value="mvn clean" />
+      <command value="grails clean" />
+      <command value="grails refresh-dependancies" />
+      <command value="clean" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -480,7 +482,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Grails: qilqaAutogestion" type="GrailsRunConfigurationType" factoryName="Grails">
+    <configuration name="Grails: gym" type="GrailsRunConfigurationType" factoryName="Grails">
       <setting name="vmparams" value="" />
       <setting name="cmdLine" value="run-app" />
       <setting name="passParentEnv" value="true" />
@@ -612,6 +614,9 @@
       <workItem from="1570926221713" duration="3262000" />
       <workItem from="1570992596804" duration="2423000" />
       <workItem from="1571001727307" duration="4542000" />
+      <workItem from="1571011372356" duration="7416000" />
+      <workItem from="1571027798970" duration="4780000" />
+      <workItem from="1571035693891" duration="1546000" />
     </task>
     <task id="LOCAL-00001" summary="tipo escribano">
       <created>1536322674625</created>

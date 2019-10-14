@@ -25,5 +25,5 @@
     </table>
 </div>
 <div class="pagination">
-    <util:remotePaginate action="filter" update="list" params="${parametros}" total="${pagoCount ?: 0}" />
+    <util:remotePaginate action="filter" update="list" params="${parametros}" total="${pagaCount ?: 0}" />
 </div>

@@ -1,13 +1,13 @@
-package taller
+package gym
 
 
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(VehiculoController)
-@Mock(Vehiculo)
-class VehiculoControllerSpec extends Specification {
+@TestFor(ItemContableController)
+@Mock(ItemContable)
+class ItemContableControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -21,8 +21,8 @@ class VehiculoControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.vehiculoInstanceList
-            model.vehiculoInstanceCount == 0
+            !model.itemContableInstanceList
+            model.itemContableInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -30,7 +30,7 @@ class VehiculoControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.vehiculoInstance!= null
+            model.itemContableInstance!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -38,25 +38,25 @@ class VehiculoControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def vehiculo = new Vehiculo()
-            vehiculo.validate()
-            controller.save(vehiculo)
+            def itemContable = new ItemContable()
+            itemContable.validate()
+            controller.save(itemContable)
 
         then:"The create view is rendered again with the correct model"
-            model.vehiculoInstance!= null
+            model.itemContableInstance!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            vehiculo = new Vehiculo(params)
+            itemContable = new ItemContable(params)
 
-            controller.save(vehiculo)
+            controller.save(itemContable)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/vehiculo/show/1'
+            response.redirectedUrl == '/itemContable/show/1'
             controller.flash.message != null
-            Vehiculo.count() == 1
+            ItemContable.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -68,11 +68,11 @@ class VehiculoControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def vehiculo = new Vehiculo(params)
-            controller.show(vehiculo)
+            def itemContable = new ItemContable(params)
+            controller.show(itemContable)
 
         then:"A model is populated containing the domain instance"
-            model.vehiculoInstance == vehiculo
+            model.itemContableInstance == itemContable
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -84,11 +84,11 @@ class VehiculoControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def vehiculo = new Vehiculo(params)
-            controller.edit(vehiculo)
+            def itemContable = new ItemContable(params)
+            controller.edit(itemContable)
 
         then:"A model is populated containing the domain instance"
-            model.vehiculoInstance == vehiculo
+            model.itemContableInstance == itemContable
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -98,28 +98,28 @@ class VehiculoControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/vehiculo/index'
+            response.redirectedUrl == '/itemContable/index'
             flash.message != null
 
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def vehiculo = new Vehiculo()
-            vehiculo.validate()
-            controller.update(vehiculo)
+            def itemContable = new ItemContable()
+            itemContable.validate()
+            controller.update(itemContable)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.vehiculoInstance == vehiculo
+            model.itemContableInstance == itemContable
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            vehiculo = new Vehiculo(params).save(flush: true)
-            controller.update(vehiculo)
+            itemContable = new ItemContable(params).save(flush: true)
+            controller.update(itemContable)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/vehiculo/show/$vehiculo.id"
+            response.redirectedUrl == "/itemContable/show/$itemContable.id"
             flash.message != null
     }
 
@@ -130,23 +130,23 @@ class VehiculoControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/vehiculo/index'
+            response.redirectedUrl == '/itemContable/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def vehiculo = new Vehiculo(params).save(flush: true)
+            def itemContable = new ItemContable(params).save(flush: true)
 
         then:"It exists"
-            Vehiculo.count() == 1
+            ItemContable.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(vehiculo)
+            controller.delete(itemContable)
 
         then:"The instance is deleted"
-            Vehiculo.count() == 0
-            response.redirectedUrl == '/vehiculo/index'
+            ItemContable.count() == 0
+            response.redirectedUrl == '/itemContable/index'
             flash.message != null
     }
 }
