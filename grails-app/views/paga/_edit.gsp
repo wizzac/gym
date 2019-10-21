@@ -9,9 +9,9 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                     <i class="material-icons">clear</i>
                                 </button>
-                                <h4 class="card-title"><g:message code="default.edit.label" args="[message(code: 'cliente.label', default: 'Alumno')]" default="Editar Pago"/></h4>
+                                <h4 class="card-title"><g:message code="default.edit.label" args="[message(code: 'cliente.label', default: 'Pago')]" default="Editar Pago"/></h4>
                             </div>
-                            <g:formRemote name="create" update="[success: 'tr' + paga.id, failure: 'errors']" url="[resource: paga, action: 'update']" method="POST" onSuccess="closeModal()">
+                            <g:formRemote name="create" update="[success: 'tr' + pago?.id, failure: 'errors']" url="[resource: pago, action: 'update']" method="POST" onSuccess="closeModal()">
                                 <div class="card-body">
                                     <g:render template="form"/>
                                     <br>

@@ -26,13 +26,13 @@
     <div class="col-md-6">
         <div class="form-group">
             <label class="bmd-label-floating"><g:message code="producto" default="Desde"/></label>
-            <g:field type="date" name="desde" class="form-control" value="${pago?.desde}"/>
+            <g:field type="date" name="desde" class="form-control" value="${pago?.desde?.format('yyyy-MM-dd')}"/>
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
             <label class="bmd-label-floating"><g:message code="producto" default="Hasta"/></label>
-            <g:field type="date" name="hasta" class="form-control" value="${pago?.hasta}"/>
+            <g:field type="date" name="hasta" class="form-control" value="${pago?.hasta?.format('yyyy-MM-dd')}"/>
         </div>
     </div>
 </div>
@@ -62,7 +62,7 @@
     $('.selectpicker').selectpicker('refresh')
     </g:if>
 
-    <g:if test="${pago?.idCategoria!=null}">
+    <g:if test="${pago?.clase!=null}">
     $('#cla').val('${pago?.clase?.id}')
     $('.selectpicker').selectpicker('refresh')
     </g:if>

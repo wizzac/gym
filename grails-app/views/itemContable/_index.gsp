@@ -11,15 +11,7 @@
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        %{--                        <g:formRemote name="filter" url="[controller: 'ItemContable', action: 'filter', params: parametros]" update="list" class="navbar-form">--}%
-                        %{--                            <div class="input-group no-border">--}%
-                        %{--                                <g:textField name="filtroTexto" class="form-control" placeholder="${message(code: "default.search.label", default: "Buscar")}..."/>--}%
-                        %{--                                <button type="submit" class="btn btn-white btn-round btn-just-icon">--}%
-                        %{--                                    <i class="material-icons">search</i>--}%
-                        %{--                                    <div class="ripple-container"></div>--}%
-                        %{--                                </button>--}%
-                        %{--                            </div>--}%
-                        %{--                        </g:formRemote>--}%
+
 
                     </div>
                 </div>
@@ -27,29 +19,36 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label>Desde:</label>
-                        <g:field type="date" class="form-control" name="desde" value="${new Date().format("yyyy-MM-dd")}"></g:field>
+                        <g:field type="date" id="desde" class="form-control" name="desde" value="${new Date().format("yyyy-MM-dd")}"></g:field>
                     </div>
                     <div class="col-md-3">
                         <label>Hasta:</label>
-                        <g:field type="date" class="form-control" name="desde" value="${new Date().format("yyyy-MM-dd")}"></g:field>
+                        <g:field type="date" id="hasta" class="form-control" name="desde" value="${new Date().format("yyyy-MM-dd")}"></g:field>
                     </div>
-                    <g:remoteLink action="filter" class="btn btn-primary" update="list"><g:message code="asd" default="Buscar"/></g:remoteLink>
+%{--                    <g:remoteLink action="filter" class="btn btn-primary" update="list"><g:message code="asd" default="Buscar"/></g:remoteLink>--}%
+                    <button  class="btn btn-primary" onclick="showProducto()"><g:message code="asd" default="Buscar"/></button>
                 </div>
+                <br>
+                <div id="list"></div>
+
             </div>
         </div>
     </div>
 </div>
 
 <div id="modal_view"></div>
-<div id="list"></div>
 
 <script>
-    $("#filtroTexto").on("keyup", function (event) {
-        var keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == '8' || $(this).val().length > 2) {
-            $(this).closest('form').submit();
-        }
-    })
+    function showProducto(){
 
+        var desde=$("#desde").val();
+        var hasta=$("#hasta").val();
+        ${remoteFunction(
+            controller: "itemContable",
+            action: "filter",
+            update: "list",
+            params: "{desde:desde,hasta:hasta}"
+        )}
+    }
     changePageTitle("${title}")
 </script>

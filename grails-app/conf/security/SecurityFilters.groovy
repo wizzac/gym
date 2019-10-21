@@ -3,7 +3,7 @@ package security
 class SecurityFilters {
 
     def filters = {
-        all(controller:'paga', action:'*',controllerExclude: "login|verify") {
+        all(controller:'paga|clase|itemContable', action:'*',controllerExclude: "login|verify") {
             before = {
                 if(!session.loggedUser) {
                     def msg = "La sesion ha expirado por falta de actividad, por favor vuelva a ingresar"

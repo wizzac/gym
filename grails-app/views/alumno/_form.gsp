@@ -32,7 +32,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label class="bmd-label-floating"><g:message code="producto" default="Fecha de nacimiento"/></label>
-            <g:field type="date" name="fechaDeNacimiento"  class="form-control" value="${alumno?.fechaDeNacimiento?.format("dd-MM-yyyy")}"/>
+            <g:field type="date" name="fechaDeNacimiento"  class="form-control" value="${alumno?.fechaDeNacimiento?.format("yyyy-MM-dd")}"/>
         </div>
     </div>
 </div>

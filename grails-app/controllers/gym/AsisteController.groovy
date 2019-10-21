@@ -133,6 +133,8 @@ class AsisteController {
 
         if( paga.cantClases>0){
             paga.cantClases-=1
+            paga.modificado=new Date()
+            paga.save(flush: true)
         }
         Asiste asiste=new Asiste();
         Alumno alumno=Alumno.get(params.alumnoId)

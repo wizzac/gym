@@ -71,13 +71,13 @@ class PagaController {
     def create(){
         def clases=Clase.findAllByEstado(1)
         def alumnos=Alumno.findAllByEstado(1)
-        render template: "create",model: [Paga: new Paga(),clases:clases,alumnos:alumnos]
+        render template: "create",model: [pago: new Paga(),clases:clases,alumnos:alumnos]
     }
 
     def edit(Paga pagaInstance){
         def clases=Clase.findAllByEstado(1)
         def alumnos=Alumno.findAllByEstado(1)
-        render template: "edit",model: [paga:pagaInstance,clases:clases,alumnos:alumnos]
+        render template: "edit",model: [pago:pagaInstance,clases:clases,alumnos:alumnos]
     }
 
     @javax.transaction.Transactional
@@ -85,7 +85,7 @@ class PagaController {
         def fecha=params.desde
         def fechahasta=params.hasta
         String free=params.free
-        if(free.equalsIgnoreCase("on")){
+        if("on".equalsIgnoreCase(free)){
             pagaInstance.free=1;
         }else{
             pagaInstance.free=null
@@ -110,10 +110,7 @@ class PagaController {
         ic.valor=pagaInstance?.clase?.precio;
         ic.validate()
         ic.save(flush: true)
-
-
         pagaInstance.itemContable=ic
-
         pagaInstance.save flush:true
         render(template: "list", model: [pagos: Paga.findAllByEstado(1,[max: 10])])
     }
@@ -125,10 +122,12 @@ class PagaController {
         pagaInstance.save(flush: true)
 
         ItemContable ic=ItemContable.get(pagaInstance.itemContable)
-        ic.estado=0
-        ic.modificado=new Date()
-        ic.validate()
-        ic.save(flush: true)
+        if (ic!=null){
+            ic.estado=0
+            ic.modificado=new Date()
+            ic.validate()
+            ic.save(flush: true)
+        }
         render("")
     }
 
@@ -136,13 +135,12 @@ class PagaController {
     def update(Paga pagaInstance){
 
         def fecha=params.desde
-
         def fechahasta=params.hasta
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd")
         Date dateDesde=sdf.parse(fecha)
         Date dateHasta=sdf.parse(fechahasta)
         String free=params.free
-        if(free.equalsIgnoreCase("on")){
+        if("on".equalsIgnoreCase(free)){
             pagaInstance.free=1;
         }else{
             pagaInstance.free=null
@@ -162,7 +160,7 @@ class PagaController {
     }
 
     def renderTableRow(Paga pagaInstance){
-        render(template: "tableRow", model: [paga: pagaInstance])
+        render(template: "tableRow", model: [pago: pagaInstance])
     }
 
 

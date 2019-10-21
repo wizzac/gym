@@ -11,7 +11,7 @@
                                 </button>
                                 <h4 class="card-title"><g:message code="default.new.label" args="[message(code: 'Cliente', default: 'Pago')]" default="Nuevo Pago"/></h4>
                             </div>
-                            <g:formRemote name="create" update="[success: 'list', failure: 'errors']" url="[resource: Paga, action: 'save']" method="POST" onSuccess="closeModal()">
+                            <g:formRemote name="create" update="[success: 'list', failure: 'errors']" url="[resource: pago, action: 'save']" method="POST" onSuccess="closeModal()">
                                 <div class="card-body">
                                     <g:render template="form"/>
                                     <br>

@@ -623,7 +623,7 @@
       <workItem from="1571035693891" duration="1546000" />
       <workItem from="1571099647007" duration="11439000" />
       <workItem from="1571180683020" duration="17671000" />
-      <workItem from="1571607897646" duration="9067000" />
+      <workItem from="1571607897646" duration="16314000" />
     </task>
     <task id="LOCAL-00001" summary="tipo escribano">
       <created>1536322674625</created>
@@ -740,14 +740,24 @@
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/grails-app/controllers/gym/PagaController.groovy</url>
-          <line>137</line>
-          <option name="timeStamp" value="67" />
+          <url>file://$PROJECT_DIR$/grails-app/controllers/gym/ItemContableController.groovy</url>
+          <line>62</line>
+          <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/grails-app/controllers/gym/PagaController.groovy</url>
-          <line>84</line>
-          <option name="timeStamp" value="79" />
+          <line>119</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/grails-app/controllers/gym/PagaController.groovy</url>
+          <line>137</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/grails-app/controllers/gym/AsisteController.groovy</url>
+          <line>126</line>
+          <option name="timeStamp" value="89" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
