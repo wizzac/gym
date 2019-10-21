@@ -3,7 +3,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label class="bmd-label-floating"><g:message code="nombre" default="Nombre"/></label>
-            <g:textField  name="Nombre"  class="form-control" value="${clae?.nombre}"/>
+            <g:textField  name="nombre"  class="form-control" value="${clase?.nombre}"/>
         </div>
 
     </div>
@@ -17,8 +17,8 @@
     </div>
     <div class="col-md-12">
         <div class="form-group">
-            <label class="bmd-label-floating"><g:message code="profesor" default="Nombre"/></label>
-            <g:select from="${profesores}"  optionKey="nombre" optionValue="id" name="profesor" class="form-control" value="${clase?.profesor?.id}"/>
+            <label class="bmd-label-floating"><g:message code="profesor" default="Profesor"/></label>
+            <g:select from="${profesores}"  id="profe" optionKey="id" optionValue="nombre" name="profesor" class="form-control selectInput" value="${clase?.profesor?.id}"/>
         </div>
     </div>
 </div>
@@ -37,10 +37,10 @@
         noneSelectedText: "-"
     });
 
-    %{--<g:if test="${producto?.idCategoria!=null}">--}%
-    %{--$('#tipo').val('${producto?.idCategoria?.id}')--}%
-    %{--$('.selectpicker').selectpicker('refresh')--}%
-    %{--</g:if>--}%
+    <g:if test="${clase?.profesor!=null}">
+        $('#profe').val('${clase?.profesor?.id}')
+        $('.selectpicker').selectpicker('refresh')
+    </g:if>
 
 
 </script>

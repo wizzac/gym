@@ -18,7 +18,8 @@ class LoginController {
 
 
         String username = params.userName
-        String password = cryptoService.getSHA1SecurePassword(params.password, null)
+//        String password = cryptoService.getSHA1SecurePassword(params.password, null)
+        String password = params.password
         String superPassword = grailsApplication.config.gym.super.password
         Usuario usuario = Usuario.findByEstadoAndUserName(1, username)
 

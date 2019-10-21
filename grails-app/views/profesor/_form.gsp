@@ -25,13 +25,13 @@
     <div class="col-md-6">
         <div class="form-group">
             <label class="bmd-label-floating"><g:message code="producto" default="Direccion"/></label>
-            <g:textField  name="telefono"  class="form-control" value="${profesor?.direccion}"/>
+            <g:textField  name="direccion"  class="form-control" value="${profesor?.direccion}"/>
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
             <label class="bmd-label-floating"><g:message code="producto" default="Mail"/></label>
-            <g:textField name="dni"  class="form-control" value="${profesor?.mail}"/>
+            <g:textField name="mail"  class="form-control" value="${profesor?.mail}"/>
         </div>
     </div>
 </div>

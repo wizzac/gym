@@ -1,11 +1,10 @@
 package gym
 
-
+import java.text.SimpleDateFormat
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
 class PagaController {
 
     PagaService pagaService
@@ -76,11 +75,27 @@ class PagaController {
     }
 
     def edit(Paga pagaInstance){
-        render template: "edit",model: [paga:pagaInstance]
+        def clases=Clase.findAllByEstado(1)
+        def alumnos=Alumno.findAllByEstado(1)
+        render template: "edit",model: [paga:pagaInstance,clases:clases,alumnos:alumnos]
     }
 
     @javax.transaction.Transactional
     def save(Paga pagaInstance) {
+        def fecha=params.desde
+        def fechahasta=params.hasta
+        String free=params.free
+        if(free.equalsIgnoreCase("on")){
+            pagaInstance.free=1;
+        }else{
+            pagaInstance.free=null
+
+        }
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd")
+        Date dateDesde=sdf.parse(fecha)
+        Date dateHasta=sdf.parse(fechahasta)
+        pagaInstance.desde=dateDesde
+        pagaInstance.hasta=dateHasta
         pagaInstance= pagaService.save(pagaInstance, session.loggedUser, params)
         pagaInstance.clearErrors()
         pagaInstance.validate()
@@ -88,6 +103,17 @@ class PagaController {
             render template:'/errors', model:[failObject: pagaInstance], status:'400'
             return
         }
+
+        ItemContable ic=new ItemContable();
+        ic.creado=new Date()
+        ic.descripcion="Pago Clase "+pagaInstance.clase.nombre
+        ic.valor=pagaInstance?.clase?.precio;
+        ic.validate()
+        ic.save(flush: true)
+
+
+        pagaInstance.itemContable=ic
+
         pagaInstance.save flush:true
         render(template: "list", model: [pagos: Paga.findAllByEstado(1,[max: 10])])
     }
@@ -97,14 +123,36 @@ class PagaController {
         pagaInstance = pagaService.delete(pagaInstance, session.loggedUser,params)
         pagaInstance.validate()
         pagaInstance.save(flush: true)
+
+        ItemContable ic=ItemContable.get(pagaInstance.itemContable)
+        ic.estado=0
+        ic.modificado=new Date()
+        ic.validate()
+        ic.save(flush: true)
         render("")
     }
 
     @javax.transaction.Transactional
     def update(Paga pagaInstance){
-        pagaInstance= pagaService.update(pagaInstance, session.loggedUser,params)
+
+        def fecha=params.desde
+
+        def fechahasta=params.hasta
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd")
+        Date dateDesde=sdf.parse(fecha)
+        Date dateHasta=sdf.parse(fechahasta)
+        String free=params.free
+        if(free.equalsIgnoreCase("on")){
+            pagaInstance.free=1;
+        }else{
+            pagaInstance.free=null
+
+        }
+        pagaInstance.desde=dateDesde
+        pagaInstance.hasta=dateHasta
         pagaInstance.clearErrors()
         pagaInstance.validate()
+        pagaInstance= pagaService.update(pagaInstance, session.loggedUser,params)
         if(pagaInstance.hasErrors()){
             render template:'/errors', model:[failObject: pagaInstance], status:'400'
             return
@@ -115,6 +163,11 @@ class PagaController {
 
     def renderTableRow(Paga pagaInstance){
         render(template: "tableRow", model: [paga: pagaInstance])
+    }
+
+
+    def generarAsiste(){
+
     }
 
 

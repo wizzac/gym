@@ -11,6 +11,7 @@ class Paga extends EstadoSimple{
     Date desde
     Date hasta
     Integer free
+    ItemContable itemContable
 
     static mapping={
         version(false)
@@ -22,5 +23,6 @@ class Paga extends EstadoSimple{
         desde nullable: true
         hasta nullable: true
         free nullable:true
+        itemContable nullable:true
     }
 }

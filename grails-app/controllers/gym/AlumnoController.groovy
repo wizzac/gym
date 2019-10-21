@@ -2,6 +2,7 @@ package gym
 
 
 import javax.transaction.Transactional
+import java.text.SimpleDateFormat
 
 class AlumnoController {
 
@@ -77,6 +78,10 @@ class AlumnoController {
 
     @Transactional
     def save(Alumno alumnoInstance) {
+        def fecha=params.fechaDeNacimiento
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd")
+        Date datenac=sdf.parse(fecha)
+        alumnoInstance.fechaDeNacimiento=datenac
         alumnoInstance= alumnoService.save(alumnoInstance, session.loggedUser, params)
         alumnoInstance.clearErrors()
         alumnoInstance.validate()
@@ -98,6 +103,10 @@ class AlumnoController {
 
     @Transactional
     def update(Alumno alumnoInstance){
+        def fecha=params.fechaDeNacimiento
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd")
+        Date datenac=sdf.parse(fecha)
+        alumnoInstance.fechaDeNacimiento=datenac
         alumnoInstance= alumnoService.update(alumnoInstance, session.loggedUser,params)
         alumnoInstance.clearErrors()
         alumnoInstance.validate()

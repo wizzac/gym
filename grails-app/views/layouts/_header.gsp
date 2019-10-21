@@ -23,7 +23,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
 %{--                        <g:remoteLink class="dropdown-item" controller="usuario" action="changePassword" params="[id: session.loggedUser.id]" update="modal_view_password"><g:message code="profile.password.change.button" default="Cambiar contraseña"/></g:remoteLink>--}%
-%{--                        <g:link class="dropdown-item" controller="verify" action="logoff"><g:message code="profile.logoff.label" default="Cerrar sesion"/></g:link>--}%
+                        <g:link class="dropdown-item" controller="verify" action="logoff"><g:message code="profile.logoff.label" default="Cerrar sesion"/></g:link>
                     </div>
                 </li>
             </ul>

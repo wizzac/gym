@@ -5,7 +5,6 @@ package gym
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
 class ProfesorController {
 
     ProfesorService profesorService
@@ -100,7 +99,7 @@ class ProfesorController {
 
     @javax.transaction.Transactional
     def update(Profesor profesorInstance){
-        profesorInstance= progesorService.update(profesorInstance, session.loggedUser,params)
+        profesorInstance= profesorService.update(profesorInstance, session.loggedUser,params)
         profesorInstance.clearErrors()
         profesorInstance.validate()
         if(profesorInstance.hasErrors()){

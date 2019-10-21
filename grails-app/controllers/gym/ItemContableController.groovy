@@ -5,100 +5,63 @@ package gym
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
 class ItemContableController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond ItemContable.list(params), model:[itemContableInstanceCount: ItemContable.count()]
+    ItemContableService itemContableService
+
+    def index() {
+        render(template: "index", model: [ title: message(code: "categorias.list.label", default: "Items")])
     }
 
-    def show(ItemContable itemContableInstance) {
-        respond itemContableInstance
+
+    def list(){
+
     }
 
-    def create() {
-        respond new ItemContable(params)
+    def create(){
+        render template: "create",model: [item: new ItemContable()]
     }
 
-    @Transactional
-    def save(ItemContable itemContableInstance) {
-        if (itemContableInstance == null) {
-            notFound()
+    def edit(ItemContable itemInstance){
+        render template: "edit",model: [item:itemInstance]
+    }
+
+    @javax.transaction.Transactional
+    def save(ItemContable itemInstance) {
+        itemInstance= itemContableService.save(itemInstance, session.loggedUser, params)
+        itemInstance.clearErrors()
+        itemInstance.validate()
+        if (itemInstance.hasErrors()) {
+            render template:'/errors', model:[failObject: itemInstance], status:'400'
             return
         }
-
-        if (itemContableInstance.hasErrors()) {
-            respond itemContableInstance.errors, view:'create'
-            return
-        }
-
-        itemContableInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'itemContable.label', default: 'ItemContable'), itemContableInstance.id])
-                redirect itemContableInstance
-            }
-            '*' { respond itemContableInstance, [status: CREATED] }
-        }
+        itemInstance.save flush:true
+        render(text: "")
     }
 
-    def edit(ItemContable itemContableInstance) {
-        respond itemContableInstance
+    @javax.transaction.Transactional
+    def delete(ItemContable itemInstance){
+        itemInstance = itemContableService.delete(itemInstance, session.loggedUser,params)
+        itemInstance.validate()
+        itemInstance.save(flush: true)
+        render("")
     }
 
-    @Transactional
-    def update(ItemContable itemContableInstance) {
-        if (itemContableInstance == null) {
-            notFound()
+    @javax.transaction.Transactional
+    def update(ItemContable itemInstance){
+        itemInstance= itemContableService.update(itemInstance, session.loggedUser,params)
+        itemInstance.clearErrors()
+        itemInstance.validate()
+        if(itemInstance.hasErrors()){
+            render template:'/errors', model:[failObject: itemInstance], status:'400'
             return
         }
-
-        if (itemContableInstance.hasErrors()) {
-            respond itemContableInstance.errors, view:'edit'
-            return
-        }
-
-        itemContableInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'ItemContable.label', default: 'ItemContable'), itemContableInstance.id])
-                redirect itemContableInstance
-            }
-            '*'{ respond itemContableInstance, [status: OK] }
-        }
+        itemInstance.save(flush: true)
+        redirect(action: "renderTableRow", params: [id: itemInstance.id])
     }
 
-    @Transactional
-    def delete(ItemContable itemContableInstance) {
-
-        if (itemContableInstance == null) {
-            notFound()
-            return
-        }
-
-        itemContableInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'ItemContable.label', default: 'ItemContable'), itemContableInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'itemContable.label', default: 'ItemContable'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
+    def renderTableRow(ItemContable itemInstance){
+        render(template: "tableRow", model: [item: itemInstance])
     }
 }

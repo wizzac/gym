@@ -436,12 +436,15 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sebyc\Desktop\gym\grails-app\views\asiste" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sebyc\Desktop\paginas\resto\grails-app\assets\images" />
       <recent name="C:\Users\sebyc\Desktop\qilqaAutogestion\grails-app\assets\images" />
@@ -455,6 +458,7 @@
       <command value="grails clean" />
       <command value="grails refresh-dependancies" />
       <command value="clean" />
+      <command value="war" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -617,6 +621,9 @@
       <workItem from="1571011372356" duration="7416000" />
       <workItem from="1571027798970" duration="4780000" />
       <workItem from="1571035693891" duration="1546000" />
+      <workItem from="1571099647007" duration="11439000" />
+      <workItem from="1571180683020" duration="17671000" />
+      <workItem from="1571607897646" duration="9067000" />
     </task>
     <task id="LOCAL-00001" summary="tipo escribano">
       <created>1536322674625</created>
@@ -731,6 +738,16 @@
           <url>file://$PROJECT_DIR$/grails-app/controllers/taller/VentaController.groovy</url>
           <line>154</line>
           <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/grails-app/controllers/gym/PagaController.groovy</url>
+          <line>137</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/grails-app/controllers/gym/PagaController.groovy</url>
+          <line>84</line>
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

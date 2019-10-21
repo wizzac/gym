@@ -69,7 +69,8 @@ class ClaseController {
     }
 
     def edit(Clase claseInstance){
-        render template: "edit",model: [clase:claseInstance]
+        def profesores=Profesor.findAllByEstado(1);
+        render template: "edit",model: [clase:claseInstance,profesores:profesores]
     }
 
     @javax.transaction.Transactional

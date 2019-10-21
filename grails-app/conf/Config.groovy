@@ -147,6 +147,13 @@ gym.menus = [
                 controller: 'paga',
                 action: 'index',
                 icon: 'monetization_on'
+        ],
+        [
+                id: 'gastos',
+                title: [code: 'Gastos', default: 'Gastos'],
+                controller: 'itemContable',
+                action: 'index',
+                icon: 'monetization_on'
         ]
 //        [
 //                id: 'bebidas',
